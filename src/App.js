@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import Student from './components/Student'
+import StudentCollection from './components/StudentCollection';
 
 function App() {
   return (
@@ -9,14 +9,7 @@ function App() {
         <h2>Ada Students!</h2>
       </header>
       <main>
-        <Student fullName="Ada Lovelace" email="ada@adadev.org" />
-        <Student />
-        {/* Fill out my full name and email! */}
-        <Student />
-        {/* Fill out my full name and email! */}
-        <Student />
-        {/* Fill out my full name and email! */}
-
+        <StudentCollection />
       </main>
 
     </div>
