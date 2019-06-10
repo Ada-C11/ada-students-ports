@@ -1,10 +1,15 @@
 import React from 'react';
 
-const Student = () => {
+const Student = (props) => {
   return (
-    <h3>
-      Student Component!
-    </h3>
+    <section>
+      <h3>
+        { props.fullName } >:)
+      </h3>
+      <p>
+        Email address: { props.email }
+      </p>
+    </section>
   );
 };
 
