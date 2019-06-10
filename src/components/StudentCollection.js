@@ -4,7 +4,11 @@ import Student from './Student';
 const StudentCollection = () => {
   return (
     <section>
-      <Student fullName="Bort Sampson" email="justlikebart@bart.org" />
+      <ul>
+        <li>
+          <Student fullName="Bort Sampson" email="justlikebart@bart.org" />
+        </li>
+      </ul>
     </section>
   );
 };
