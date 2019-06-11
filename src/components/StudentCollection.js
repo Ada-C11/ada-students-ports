@@ -7,7 +7,6 @@ const StudentCollection = () => {
   const students = [
     {
       fullName: "Ada Lovelace",
-      email: "ada@lovelace.uk",
     },
     {
       fullName: "Katherine Johnson",
@@ -15,12 +14,12 @@ const StudentCollection = () => {
     },
   ];
 
-  const studentComponents = students.map( (student, i) => {
+  const studentComponents = students.map((student, i) => {
     return (
       <li key={i}>
         <Student
-          fullName={ student.fullName }
-          email={ student.email } />
+          fullName={student.fullName}
+          email={student.email} />
       </li>
     );
   });
@@ -28,7 +27,7 @@ const StudentCollection = () => {
   return (
     <section>
       <ul>
-        { studentComponents }
+        {studentComponents}
       </ul>
     </section>
   );
