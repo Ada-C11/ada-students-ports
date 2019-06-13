@@ -1,18 +1,24 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-const Student = (props) => {
-  return (
-    <section>
-      <h3>
-        {props.fullName} >:)
-      </h3>
-      <p>
-        Email address: {props.email}
-      </p>
-    </section>
-  );
-};
+class Student extends Component {
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
+    return (
+      <section>
+        <h3>
+          {this.props.fullName} >:)
+        </h3>
+        <p>
+          Email address: {this.props.email}
+        </p>
+      </section>
+    );
+  }
+}
 
 Student.propTypes = {
   // fullName must be a string and is required
