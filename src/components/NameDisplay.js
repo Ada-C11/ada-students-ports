@@ -13,7 +13,7 @@ class NameDisplay extends React.Component {
   }
 
   onButtonClick = () => {
-    console.log(this.state.displayName);
+    console.log(this.state.displayName)
 
     this.setState({
       displayName: !this.state.displayName,
@@ -28,11 +28,20 @@ class NameDisplay extends React.Component {
   }
 
   onNameChange = (event) => {
-    console.log(event);
+    // console.log(event);
+    // console.log(event.type);
+    // console.log(event.currentTarget.value);
+    this.setState({
+      name: event.target.value,
+    });
   }
 
   render() {
     let display = 'Sorry I don\'t know you';
+
+    console.log(this.props);
+    console.log(this.state);
+
 
     if (this.state.displayName) {
       display = `Hello, ${this.state.name}`;
@@ -56,7 +65,7 @@ class NameDisplay extends React.Component {
           Blue
         </button>
       </section>
-    )
+    );
   }
 
 }
