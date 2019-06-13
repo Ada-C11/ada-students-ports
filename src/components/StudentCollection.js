@@ -1,36 +1,43 @@
 import React from 'react';
 import Student from './Student';
 
-const StudentCollection = () => {
+class StudentCollection extends React.Component {
+  constructor(props) {
+    super(props);
 
-  // One day, this will not be assigned to an array literal... it will be assigned to JSON coming from an API ;)
-  const students = [
-    {
-      fullName: "Ada Lovelace",
-    },
-    {
-      fullName: "Katherine Johnson",
-      email: "kat@nasa.gov",
-    },
-  ];
+    this.state = {
+      students: [
+        {
+          fullName: "Ada Lovelace",
+        },
+        {
+          fullName: "Katherine Johnson",
+          email: "kat@nasa.gov",
+        },
+      ]
+    };
+  }
 
-  const studentComponents = students.map((student, i) => {
+  render() {
+    const studentComponents = this.state.students.map((student, i) => {
+      return (
+        <li key={i}>
+          <Student
+            fullName={student.fullName}
+            email={student.email} />
+        </li>
+      );
+    });
+
     return (
-      <li key={i}>
-        <Student
-          fullName={student.fullName}
-          email={student.email} />
-      </li>
+      <section>
+        <ul>
+          {studentComponents}
+        </ul>
+      </section>
     );
-  });
+  }
 
-  return (
-    <section>
-      <ul>
-        {studentComponents}
-      </ul>
-    </section>
-  );
-};
+}
 
 export default StudentCollection;
