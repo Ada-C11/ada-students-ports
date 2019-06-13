@@ -9,13 +9,36 @@ class StudentCollection extends React.Component {
       students: [
         {
           fullName: "Ada Lovelace",
+          isPresent: false,
         },
         {
           fullName: "Katherine Johnson",
           email: "kat@nasa.gov",
+          isPresent: false,
         },
+        {
+          fullName: "Betty White",
+          isPresent: false,
+        },
+        {
+          fullName: "Dee",
+          isPresent: false,
+        },
+        {
+          fullName: "Chris",
+          isPresent: false,
+        }
       ]
     };
+  }
+
+  markPresent = (studentIndex) => {
+    let updatedStudents = this.state.students;
+    updatedStudents[studentIndex].isPresent = true;
+
+    this.setState({
+      students: updatedStudents,
+    });
   }
 
   render() {
@@ -23,8 +46,11 @@ class StudentCollection extends React.Component {
       return (
         <li key={i}>
           <Student
+            index={i}
             fullName={student.fullName}
-            email={student.email} />
+            email={student.email}
+            isPresent={student.isPresent}
+            markPresentCallback={this.markPresent} />
         </li>
       );
     });
