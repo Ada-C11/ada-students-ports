@@ -1,11 +1,13 @@
 import React from 'react';
 import Student from './Student';
+import NewStudentForm from './NewStudentForm';
 
 class StudentCollection extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
+      message: '',
       students: [
         {
           fullName: "Ada Lovelace",
@@ -30,6 +32,16 @@ class StudentCollection extends React.Component {
         }
       ]
     };
+  }
+
+  addStudent = (student) => {
+    const students = this.state.students;
+    students.push(student);
+    this.setState({
+      students,
+      message: `${student.fullName} is added`,
+      // students: students,
+    });
   }
 
   markPresent = (studentIndex) => {
@@ -57,6 +69,10 @@ class StudentCollection extends React.Component {
 
     return (
       <section>
+        <p>{this.state.message}</p>
+
+        <NewStudentForm addStudentCallback={this.addStudent} />
+
         <ul>
           {studentComponents}
         </ul>
