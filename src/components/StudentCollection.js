@@ -1,36 +1,14 @@
 import React from 'react';
 import Student from './Student';
 import NewStudentForm from './NewStudentForm';
-
+import studentsList from '../students.json';
 class StudentCollection extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
       message: '',
-      students: [
-        {
-          fullName: "Ada Lovelace",
-          isPresent: false,
-        },
-        {
-          fullName: "Katherine Johnson",
-          email: "kat@nasa.gov",
-          isPresent: false,
-        },
-        {
-          fullName: "Betty White",
-          isPresent: false,
-        },
-        {
-          fullName: "Dee",
-          isPresent: false,
-        },
-        {
-          fullName: "Chris",
-          isPresent: false,
-        }
-      ]
+      students: studentsList.students,
     };
   }
 
