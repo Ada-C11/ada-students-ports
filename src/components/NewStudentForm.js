@@ -21,6 +21,7 @@ class NewStudentForm extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
+
     this.props.addStudentCallback({
       fullName: this.state.fullName,
       email: this.state.email,
