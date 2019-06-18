@@ -53,7 +53,7 @@ class StudentCollection extends React.Component {
     });
 
     const messages = this.state.messages.map((message) => {
-      return <p>{message}</p>;
+      return <p key={message}>{message}</p>;
     });
 
     return (
