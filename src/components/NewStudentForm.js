@@ -12,6 +12,15 @@ class NewStudentForm extends Component {
     };
   }
 
+  validations = {
+    fullName: /.+/,
+    email: /.+@.+/,
+  }
+
+  fieldValid = (fieldName) => {
+    return this.validations[fieldName].test(this.state[fieldName]);
+  }
+
   onChangeHandler = (event) => {
     const field = {}
     field[event.target.name] = event.target.value;
@@ -22,20 +31,26 @@ class NewStudentForm extends Component {
   handleSubmit = (event) => {
     event.preventDefault();
 
-    this.props.addStudentCallback({
-      fullName: this.state.fullName,
-      email: this.state.email,
-    });
-    this.setState({
-      fullName: '',
-      email: '',
-    });
+    let allFieldsValid = true;
+    Object.keys(this.validations).forEach((fieldName) => {
+      if (!this.fieldValid(fieldName)) {
+        allFieldsValid = false;
+      }
+    })
 
+    if (allFieldsValid) {
+      this.props.addStudentCallback({
+        fullName: this.state.fullName,
+        email: this.state.email,
+      });
+      this.setState({
+        fullName: '',
+        email: '',
+      });
+    }
   }
 
   render() {
-    const emailValid = /@/.test(this.state.email);
-    console.log(emailValid);
     return (
       <form className="new-student-form" onSubmit={this.handleSubmit}>
         <div>
@@ -44,12 +59,13 @@ class NewStudentForm extends Component {
             name="fullName"
             onChange={this.onChangeHandler}
             value={this.state.fullName}
+            className={this.fieldValid('fullName') ? 'valid' : 'invalid'}
           />
         </div>
         <div>
           <label htmlFor="email">Email:</label>
           <input
-            className={emailValid ? 'valid' : 'invalid'}
+            className={this.fieldValid('email') ? 'valid' : 'invalid'}
             name="email"
             value={this.state.email}
             onChange={this.onChangeHandler}
