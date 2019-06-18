@@ -7,9 +7,15 @@ class StudentCollection extends React.Component {
     super(props);
 
     this.state = {
-      message: '',
+      messages: [],
       students: studentsList.students,
     };
+  }
+
+  showMessages = (messages) => {
+    this.setState({
+      messages,
+    });
   }
 
   addStudent = (student) => {
@@ -17,7 +23,7 @@ class StudentCollection extends React.Component {
     students.push(student);
     this.setState({
       students,
-      message: `${student.fullName} is added`,
+      messages: [`${student.fullName} is added`],
       // students: students,
     });
   }
@@ -40,16 +46,24 @@ class StudentCollection extends React.Component {
             fullName={student.fullName}
             email={student.email}
             isPresent={student.isPresent}
-            markPresentCallback={this.markPresent} />
+            markPresentCallback={this.markPresent}
+          />
         </li>
       );
     });
 
+    const messages = this.state.messages.map((message) => {
+      return <p>{message}</p>;
+    });
+
     return (
       <section>
-        <p>{this.state.message}</p>
+        {messages}
 
-        <NewStudentForm addStudentCallback={this.addStudent} />
+        <NewStudentForm
+          addStudentCallback={this.addStudent}
+          messageCallback={this.showMessages}
+        />
 
         <ul>
           {studentComponents}
